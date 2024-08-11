@@ -193,35 +193,36 @@ export default function Ide({ socketRef, roomId , onCodeChange  }) {
 
   useEffect(() => {
     if (socketRef.current) {
-      function debounce(func, wait) {
-        let timeout;
-        return function(...args) {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => func(...args), wait);
-        };
-      }
-      // const handleCodeChange = ({ code }) => {
-      //   if (editorRef.current && code !== editorRef.current.getValue()) {
-      //     console.log("haan haan bhai" , editorRef.current.getValue(), " code " , code)
-      //      // editorRef.current.setValue(code);
-      //       editorRef.current.updateOptions({code});
-      //      setValue(code)
-      //     // console.log("haan haan bhai" , editorRef.current.getValue(), " code " , code)
+      // function debounce(func, wait) {
+      //   let timeout;
+      //   return function(...args) {
+      //     clearTimeout(timeout);
+      //     timeout = setTimeout(() => func(...args), wait);
+      //   };
+      // }
+      
+      const handleCodeChange = ({ code }) => {
+        if (editorRef.current && code !== editorRef.current.getValue()) {
+          console.log("haan haan bhai" , editorRef.current.getValue(), " code " , code)
+           // editorRef.current.setValue(code);
+            editorRef.current.updateOptions({code});
+           setValue(code)
+          // console.log("haan haan bhai" , editorRef.current.getValue(), " code " , code)
          
        
-      //   }
-      // };
-
-
-       const handleCodeChange = debounce(({ code }) => {
-        if (editorRef.current && code !== editorRef.current.getValue()) {
-          console.log("haan haan bhai", editorRef.current.getValue(), "code", code);
-          // editorRef.current.setValue(code);
-          editorRef.current.updateOptions({ code });
-          setValue(code);
-          // console.log("haan haan bhai", editorRef.current.getValue(), "code", code);
         }
-      }, 500);
+      };
+
+
+      //  const handleCodeChange = debounce(({ code }) => {
+      //   if (editorRef.current && code !== editorRef.current.getValue()) {
+      //     console.log("haan haan bhai", editorRef.current.getValue(), "code", code);
+      //     // editorRef.current.setValue(code);
+      //     editorRef.current.updateOptions({ code });
+      //     setValue(code);
+      //     // console.log("haan haan bhai", editorRef.current.getValue(), "code", code);
+      //   }
+      // }, 500);
 
       const handleLanguageChange = ({ language }) => {
         console.log("lang" , editorRef.current.getModel().getLanguageId() )
