@@ -85,9 +85,9 @@ io.on("connection", (socket) => {
     socket.in(roomId).emit('sendApiData', {output,error});
   });
   // Handle the refresh notification
-  socket.on('USER_REFRESH', (roomId) => {
-    socket.to(roomId).emit('REFRESH_BROWSER');
-  });
+  // socket.on('USER_REFRESH', (roomId) => {
+  //   socket.to(roomId).emit('REFRESH_BROWSER');
+  // });
 
    // Handle language change
    socket.on(ACTIONS.LANGUAGE_CHANGE, ({ roomId, language }) => {
