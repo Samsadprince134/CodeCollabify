@@ -158,7 +158,7 @@ export default function Ide({ socketRef, roomId , onCodeChange  }) {
         roomId,
         code,
       });
-    }, )
+    }, [1000])
 
    
   ).current;
@@ -216,27 +216,27 @@ export default function Ide({ socketRef, roomId , onCodeChange  }) {
         }
       };
 
-      const handleRefreshBrowser = () => {
-        window.location.reload();
-      };
+      // const handleRefreshBrowser = () => {
+      //   window.location.reload();
+      // };
 
       // socketRef.current.on(ACTIONS.LANGUAGE_CHANGE, handleLanguageChange);
       socketRef.current.on(ACTIONS.CODE_CHANGE, handleCodeChange);
       socketRef.current.on(ACTIONS.LANGUAGE_CHANGE, handleLanguageChange);
-      socketRef.current.on('REFRESH_BROWSER', handleRefreshBrowser);
+     // socketRef.current.on('REFRESH_BROWSER', handleRefreshBrowser);
 
         // Notify the server when about to refresh
-    const handleBeforeUnload = () => {
-      socketRef.current.emit('USER_REFRESH', roomId);
-    };
+    // const handleBeforeUnload = () => {
+    //   socketRef.current.emit('USER_REFRESH', roomId);
+    // };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+  //  window.addEventListener('beforeunload', handleBeforeUnload);
 
       return () => {
         socketRef.current.off(ACTIONS.CODE_CHANGE, handleCodeChange);
         socketRef.current.off(ACTIONS.LANGUAGE_CHANGE, handleLanguageChange);
-        socketRef.current.off('REFRESH_BROWSER');
-        window.removeEventListener('beforeunload', handleBeforeUnload);
+       // socketRef.current.off('REFRESH_BROWSER');
+      //  window.removeEventListener('beforeunload', handleBeforeUnload);
       };
     }
   }, [socketRef.current]);
