@@ -221,7 +221,7 @@ export default function Ide({ socketRef, roomId , onCodeChange  }) {
           setValue(code);
           // console.log("haan haan bhai", editorRef.current.getValue(), "code", code);
         }
-      }, 200);
+      }, 500);
 
       const handleLanguageChange = ({ language }) => {
         console.log("lang" , editorRef.current.getModel().getLanguageId() )
