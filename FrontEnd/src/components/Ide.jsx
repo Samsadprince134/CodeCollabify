@@ -158,7 +158,7 @@ export default function Ide({ socketRef, roomId , onCodeChange  }) {
         roomId,
         code,
       });
-    }, 100)
+    }, 500)
 
    
   ).current;
