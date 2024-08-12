@@ -21,7 +21,7 @@
   <ul style="list-style-type: disc; padding-left: 20px; color: #555; font-size: 16px;">
     <li>ReactJS</li>
     <li>Monaco Editor</li>
-    <li>Tailwind CSS for styling</li>
+    <li>Tailwind CSS & shadcn/ui for styling</li>
     <li>WebSocket for real-time communication</li>
   </ul>
 
