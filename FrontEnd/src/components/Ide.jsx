@@ -579,27 +579,43 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
           code,
         });
       }
-    }, 500)
+    }, 300)
   ).current;
 
-  const onMount = useCallback(
-    (editor) => {
-      editorRef.current = editor;
-      editor.focus();
+  // const onMount = useCallback(
+  //   (editor) => {
+  //     editorRef.current = editor;
+  //     editor.focus();
 
-      // Setup change event listener with debounced emission
-      editor.onDidChangeModelContent(() => {
-        const code = editor.getValue();
-        if (code !== value) {
-          // Update local state and emit code change
-          setValue(code);
-          onCodeChange(code);
-          debouncedEmitCodeChange(code);
-        }
-      });
-    },
-    [debouncedEmitCodeChange, onCodeChange, value]
-  );
+  //     // Setup change event listener with debounced emission
+  //     editor.onDidChangeModelContent(() => {
+  //       const code = editor.getValue();
+  //       if (code !== value) {
+  //         // Update local state and emit code change
+  //         setValue(code);
+  //         onCodeChange(code);
+  //         debouncedEmitCodeChange(code);
+  //       }
+  //     });
+  //   },
+  //   [debouncedEmitCodeChange, onCodeChange, value]
+  // );
+
+   const onMount = (editor) => {
+    editorRef.current = editor;
+    editor.focus();
+
+    // Setup change event listener with debounced emission
+    editor.onDidChangeModelContent(() => {
+      const code = editor.getValue();
+      if (code !== value) {
+        // Update local state and emit code change
+        setValue(code);
+        onCodeChange(code); // Optional: call parent handler if needed
+        debouncedEmitCodeChange(code);
+      }
+    });
+  };
 
   const onSelect = useCallback(
     (language) => {
@@ -623,8 +639,10 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
         console.log("Current Editor Value:", editorRef.current.getValue());
         if (editorRef.current && code !== editorRef.current.getValue()) {
           
-          editorRef.current.updateOptions({code});
-          setValue(code)
+          // editorRef.current.updateOptions({code});
+          // setValue(code)
+          editorRef.current.setValue(code);
+          setValue(code);
           
         }
         console.log("Updated Editor Value:", editorRef.current.getValue());
