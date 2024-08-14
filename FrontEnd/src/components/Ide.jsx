@@ -71,7 +71,7 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
       const handleCodeChange = ({ code }) => {
            console.log("Received Code:", code);
           console.log("Current Editor Value:", editorRef.current.getValue());
-        if (editorRef.current && code !== editorRef.current.getValue()) {
+        if (editorRef.current && code !== editorRef.current.getValue() && code!==null) {
           isRemoteChange.current = true; // Mark change as remote
           editorRef.current.setValue(code);
          // setValue(code);
