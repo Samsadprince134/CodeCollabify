@@ -14,12 +14,16 @@ const path = require('path');
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 // });
-const frontEndPath = path.resolve(__dirname, '../FrontEnd/dist');
-app.use(express.static(frontEndPath));
+// const frontEndPath = path.resolve(__dirname, '../FrontEnd/dist');
+// app.use(express.static(frontEndPath));
 
-// The "catchall" handler: for any request that doesn't match one above, send back index.html
+// // The "catchall" handler: for any request that doesn't match one above, send back index.html
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(frontEndPath, 'index.html'));
+// });
+app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(frontEndPath, 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../FrontEnd/dist', 'index.html'));
 });
 
 
