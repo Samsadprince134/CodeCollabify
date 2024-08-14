@@ -325,7 +325,7 @@ const CodeEditor = () => {
         <div className="flex-grow overflow-auto">
           <h2 className="text-xl font-semibold mb-4 text-center">Members</h2>
           {clients.map((client) => (
-            <Client key={client.socketId} username={client.username} />
+            <Client key={client.socketId} username={client.username} Location = {Location} />
           ))}
         </div>
         <div className="mt-4 flex flex-col space-y-2">
