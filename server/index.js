@@ -8,12 +8,19 @@ const cors = require('cors');
 const server = http.createServer(app);
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
-// The "catchall" handler: for any request that doesn't match one above, send back index.html
+// // The "catchall" handler: for any request that doesn't match one above, send back index.html
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+// });
+
+app.use(express.static(path.join(__dirname, 'FrontEnd/dist')));
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'FrontEnd/dist', 'index.html'));
 });
+
 // const io = new Server(server, {
 //   path : '/socket',
 //   wssEngine : ['ws','wss'],
