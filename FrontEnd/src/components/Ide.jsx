@@ -1,4 +1,8 @@
 
+
+
+
+
 import React, { useEffect, useRef, useState } from "react";
 import { Box, HStack } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
@@ -36,7 +40,7 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
           code,
         });
       }
-    }, 500)
+    },)
   ).current;
 
   const onMount = (editor) => {
