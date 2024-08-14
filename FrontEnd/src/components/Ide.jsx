@@ -37,7 +37,7 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
           code,
         });
       }
-    },)
+    }, 300)
   ).current;
 
   const onMount = (editor) => {
@@ -68,7 +68,7 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
         if (editorRef.current && code !== editorRef.current.getValue()) {
           isRemoteChange.current = true; // Mark change as remote
           editorRef.current.setValue(code);
-          setValue(code);
+         // setValue(code);
           isRemoteChange.current = false; // Reset the flag after change
         }
       };
