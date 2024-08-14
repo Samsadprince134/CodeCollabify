@@ -15,10 +15,10 @@ const path = require('path');
 //   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 // });
 
-app.use(express.static(path.join(__dirname, 'FrontEnd/dist')));
+app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'FrontEnd/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../FrontEnd/dist', 'index.html'));
 });
 
 // const io = new Server(server, {
