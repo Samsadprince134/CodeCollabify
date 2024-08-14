@@ -25,7 +25,8 @@ app.use(express.static(path.join(__dirname, '../FrontEnd/dist')));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../FrontEnd/dist', 'index.html'));
 });
-
+console.log('Serving from:', path.join(__dirname, '../FrontEnd/dist'));
+console.log('Sending file:', path.resolve(__dirname, '../FrontEnd/dist', 'index.html'));
 
 // const io = new Server(server, {
 //   path : '/socket',
