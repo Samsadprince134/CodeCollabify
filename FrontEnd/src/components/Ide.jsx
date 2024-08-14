@@ -31,7 +31,9 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
 
   const debouncedEmitCodeChange = useRef(
     debounce((code) => {
+      console.log("haan bhai deboune me hun");
       if (!isRemoteChange.current) {
+           console.log("haan bhai deboune ke v andar hun");
         socketRef.current.emit(ACTIONS.CODE_CHANGE, {
           roomId,
           code,
@@ -46,7 +48,9 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
 
     editor.onDidChangeModelContent(() => {
       const code = editor.getValue();
+             console.log("changes1" , code , value);
       if (code !== value && !isRemoteChange.current) {
+        console.log("changes2" , code , value);
         setValue(code);
         debouncedEmitCodeChange(code);
       }
@@ -65,12 +69,15 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
   useEffect(() => {
     if (socketRef.current) {
       const handleCodeChange = ({ code }) => {
+           console.log("Received Code:", code , username );
+          console.log("Current Editor Value:", editorRef.current.getValue());
         if (editorRef.current && code !== editorRef.current.getValue()) {
           isRemoteChange.current = true; // Mark change as remote
           editorRef.current.setValue(code);
          // setValue(code);
           isRemoteChange.current = false; // Reset the flag after change
         }
+         console.log("Updated Editor Value:", editorRef.current.getValue());
       };
 
       const handleLanguageChange = ({ language }) => {
