@@ -14,11 +14,11 @@ const path = require('path');
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 // });
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/FrontEnd/dist')));
+const __dirname1 = path.resolve();
+app.use(express.static(path.join(__dirname1, '/FrontEnd/dist')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'FrontEnd', 'dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname1, 'FrontEnd', 'dist', 'index.html'));
 });
 
 // const io = new Server(server, {
