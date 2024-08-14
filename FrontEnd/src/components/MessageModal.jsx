@@ -702,6 +702,7 @@ export default function MessagingApp({ roomId, socketRef }) {
             {/* Input for Messaging */}
             <form className="flex mt-4" onSubmit={handleSendMessage}>
               <Input
+                  autoFocus
                 placeholder="Type your message here"
                 className="flex-grow mr-2 text-black"
                 value={inputValue}
