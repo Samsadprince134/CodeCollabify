@@ -39,7 +39,7 @@ export default function Ide({ socketRef, roomId, onCodeChange }) {
           code,
         });
       }
-    }, 300)
+    }, 0)
   ).current;
 
   const onMount = (editor) => {
